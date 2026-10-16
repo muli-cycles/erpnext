@@ -288,7 +288,8 @@ erpnext.stock.move_item = function (item, source, target, actual_qty, rate, stoc
 			source_warehouse: dialog.get_value("source"),
 			target_warehouse: dialog.get_value("target"),
 			qty: dialog.get_value("qty"),
-			rate: dialog.get_value("rate"),
+			// omit an empty rate: null would be sent as "" and fail the float type check
+			rate: dialog.get_value("rate") ?? undefined,
 		});
 	});
 };
